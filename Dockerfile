@@ -1,4 +1,4 @@
-FROM maven:3.5.4-jdk-8-alpine
+FROM maven:3.6-jdk-8-alpine
 RUN apk update
 RUN apk add bluez
 RUN apk add bluez-deprecated
