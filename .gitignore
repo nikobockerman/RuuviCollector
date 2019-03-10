@@ -1,5 +1,6 @@
 target/
 /ruuvi-collector.properties
 /ruuvi-names.properties
+/configuration-description.txt
 .idea/
 *.iml
