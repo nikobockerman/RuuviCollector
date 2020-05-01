@@ -1,7 +1,6 @@
-FROM maven:3.6-jdk-8-alpine
-RUN apk update
-RUN apk add bluez
-RUN apk add bluez-deprecated
+FROM maven:3.6-adoptopenjdk-8
+RUN apt update
+RUN apt install -y bluez bluez-hcidump
 COPY pom.xml .
 RUN mvn -B dependency:resolve-plugins dependency:resolve clean package
 ADD . /app
