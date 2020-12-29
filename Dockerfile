@@ -14,6 +14,9 @@ RUN mkdir -p target/docker && cd target/docker && cp ../ruuvi-collector-*.jar .
 FROM adoptopenjdk:8-jre
 WORKDIR /app
 
+# `java` executable needs libatomic1.so => should be reported to upstream
+RUN apt-get update && apt-get install -y libatomic1
+
 RUN apt-get update && apt-get install -y bluez bluez-hcidump
 
 COPY --from=maven_build /app/target/docker/ruuvi-collector-*.jar /app/
