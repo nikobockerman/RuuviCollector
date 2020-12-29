@@ -11,11 +11,10 @@ RUN --mount=type=cache,target=/root/.m2 mvn clean package
 RUN mkdir -p target/docker && cd target/docker && cp ../ruuvi-collector-*.jar .
 
 ### JRE run stage
-FROM openjdk:8-jre-alpine
+FROM adoptopenjdk:8-jre
 WORKDIR /app
 
-RUN apk update
-RUN apk add bluez-deprecated
+RUN apt-get update && apt-get install -y bluez bluez-hcidump
 
 COPY --from=maven_build /app/target/docker/ruuvi-collector-*.jar /app/
 
