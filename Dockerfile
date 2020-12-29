@@ -1,5 +1,3 @@
-#syntax=docker/dockerfile:experimental
-
 ### Maven build stage
 FROM maven:3.6-adoptopenjdk-8 as maven_build
 WORKDIR /app
